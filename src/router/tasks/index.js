@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const taskApis = require('./tasks');
 
-const { authenticate, } = require('./../../lib/middlewares');
+const { authenticate } = require('./../../lib/middlewares');
 
 router.get('/:id', authenticate, taskApis.get);
 router.get('/', authenticate, taskApis.list);

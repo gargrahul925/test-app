@@ -4,6 +4,7 @@ services:
     build:
       context: .
     container_name: app
+    command: npm run start-watch
     volumes:
       - ".:/home/alpine/app"
       - "/home/alpine/app/node_modules"

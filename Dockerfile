@@ -26,5 +26,3 @@ WORKDIR /home/alpine/app
 # install dependency
 ADD package.json .
 RUN npm install
-
-CMD ["node_modules/.bin/nodemon", "-L", "--inspect=0.0.0.0:5858", "index.js"]

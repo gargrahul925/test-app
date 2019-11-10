@@ -6,9 +6,9 @@
  * @returns {undefined}
  */
 function ApiResponse(statusCode, data, type) {
-    this.statusCode = statusCode;
-    this.data = data;
-    this.type = type || 'json';
+  this.statusCode = statusCode;
+  this.data = data;
+  this.type = type || 'json';
 }
 
 module.exports = ApiResponse;

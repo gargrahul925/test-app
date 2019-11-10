@@ -1,5 +1,6 @@
 const defer = require('config/defer').deferConfig;
 const p = require('./../package.json');
+const path = require('path');
 
 module.exports = {
     app: {
@@ -21,5 +22,8 @@ module.exports = {
     redis: {
         host: 'local_redis',
         port: 6379
+    },
+    logger: {
+        filePath: path.join(__dirname, './../app.log'),
     }
 };

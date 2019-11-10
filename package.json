@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start-watch": "nodemon --watch src index.js",
+    "test": "docker exec -it app node node_modules/.bin/jest --testPathPattern=test/*.js",
+    "lint": "docker exec -it app node_modules/.bin/eslint src *.js",
+    "start-watch": "node_modules/.bin/nodemon -L --inspect=0.0.0.0:5858 index.js",
     "test-watch": "docker exec -it app  node node_modules/.bin/jest --testPathPattern=test/*.js  --watch",
-    "lint-fix": "docker exec -it app ./node_modules/.bin/eslint --fix src *.js",
-    "test": "node node_modules/.bin/jest --testPathPattern=test/*.js --coverage",
-    "lint": "node_modules/.bin/eslint src *.js"
+    "lint-fix": "docker exec -it app ./node_modules/.bin/eslint --fix src *.js"
   },
   "license": "MIT",
   "dependencies": {
