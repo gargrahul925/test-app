@@ -8,10 +8,10 @@
     "start-watch": "nodemon --watch src index.js",
     "test-watch": "docker exec -it app  node node_modules/.bin/jest --testPathPattern=test/*.js  --watch",
     "lint-fix": "docker exec -it app ./node_modules/.bin/eslint --fix src *.js",
-    "test": "node node_modules/jest/bin/jest --coverage src",
+    "test": "node node_modules/.bin/jest --testPathPattern=test/*.js --coverage",
     "lint": "node_modules/.bin/eslint src *.js"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@hapi/joi": "^16.0.0",
     "bcrypt": "^3.0.6",
