@@ -22,18 +22,22 @@ class TaskAPI {
     const errorMap = {
       [errors.ERR_INVALID_ARGS]: () => (
         new commonErrors.HttpStatusError(
-          HttpStatusCode.BAD_REQUEST,
-          'User Input is not valid.',
+          HttpStatusCode.BAD_REQUEST, {
+            message: 'User Input is not valid.',
+          },
         )
       ),
       [errors.NOT_FOUND]: () => (
         new commonErrors.HttpStatusError(
-          HttpStatusCode.NOT_FOUND,
-          'Task not found',
+          HttpStatusCode.NOT_FOUND, {
+            message: 'Task not found',
+          },
         )
       ),
       default: () => (new commonErrors.HttpStatusError(
-        HttpStatusCode.INTERNAL_SERVER_ERROR,
+        HttpStatusCode.INTERNAL_SERVER_ERROR, {
+          message: error.message,
+        },
       )),
     };
     if (errorMap[error.message]) {

@@ -1,7 +1,7 @@
-const authenticate = require('./authenticate.js');
-const responseHandler = require('./responseHandler.js');
+const Authenticate = require('./authenticate.js');
+const ResponseHandler = require('./responseHandler.js');
 
 module.exports = {
-  authenticate,
-  responseHandler,
+  Authenticate,
+  ResponseHandler,
 };

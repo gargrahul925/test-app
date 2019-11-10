@@ -2,7 +2,8 @@ const HttpStatus = require('http-status-codes');
 const ApiResponse = require('../core/APIResponse');
 const logger = require('../logger');
 
-module.exports = {
+
+class ResposeHandler {
   /**
     * Error handling middleware
     * @param {any} err - Error that should be sent in response
@@ -11,7 +12,7 @@ module.exports = {
     * @param {any} next - Next handler to be called
     * @returns {undefined}
     */
-  ErrorHandler(err, req, res, next) {
+  static Error(err, req, _res, next) {
     if (!err || !err.error) {
       return;
     }
@@ -35,8 +36,9 @@ module.exports = {
     });
     logger.error(logObject);
     next(error);
-  },
-  OkHandler(req, res) {
+  }
+
+  static Ok(_req, res) {
     const { apiResponse } = res.locals;
     if (apiResponse instanceof ApiResponse) {
       if (!apiResponse.type || apiResponse.type === 'json') {
@@ -45,5 +47,7 @@ module.exports = {
     } else {
       res.status(HttpStatus.NOT_FOUND).json(apiResponse);
     }
-  },
-};
+  }
+}
+
+module.exports = ResposeHandler;

@@ -3,10 +3,11 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const config = require('config');
 const cors = require('cors');
+const commonErrors = require('common-errors');
 
 const router = require('./../router');
 
-const { responseHandler } = require('./../lib/middlewares');
+const { ResponseHandler } = require('./../lib/middlewares');
 const { connectDb } = require('../models');
 
 
@@ -27,8 +28,9 @@ const createApp = async () => {
 
   // Add error handler and OkHandler middleware
   // after all other routes have been added
-  app.use(responseHandler.OkHandler);
-  app.use(responseHandler.ErrorHandler);
+  app.use(ResponseHandler.Ok);
+  app.use(ResponseHandler.Error);
+  app.use(commonErrors.middleware.errorHandler);
 
   await connectDb();
 

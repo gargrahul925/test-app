@@ -24,30 +24,29 @@ class UserAPI {
     const errorMap = {
       [errors.ERR_INVALID_ARGS]: () => (
         new commonErrors.HttpStatusError(
-          HttpStatusCode.BAD_REQUEST,
-          'User Input is not valid.',
-        )
-      ),
-      [errors.ERR_DOWNLOAD_FONT]: () => (
-        new commonErrors.HttpStatusError(
-          HttpStatusCode.UNPROCESSABLE_ENTITY,
-          'Unable to download source font',
+          HttpStatusCode.BAD_REQUEST, {
+            message: 'User Input is not valid.',
+          },
         )
       ),
       [errors.CREDENTIALS_NOT_VALID]: () => (
         new commonErrors.HttpStatusError(
-          HttpStatusCode.UNAUTHORIZED,
-          'Email or password is wrong',
+          HttpStatusCode.UNAUTHORIZED, {
+            message: 'Email or password is wrong',
+          },
         )
       ),
       [errors.DUPLICATE_DATA]: () => (
         new commonErrors.HttpStatusError(
-          HttpStatusCode.CONFLICT,
-          'User with given email already registered',
+          HttpStatusCode.CONFLICT, {
+            message: 'User with given email already registered',
+          },
         )
       ),
       default: () => (new commonErrors.HttpStatusError(
-        HttpStatusCode.INTERNAL_SERVER_ERROR,
+        HttpStatusCode.INTERNAL_SERVER_ERROR, {
+          message: error.message,
+        },
       )),
     };
     if (errorMap[error.message]) {
