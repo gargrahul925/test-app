@@ -9,9 +9,6 @@ module.exports = {
     api: {
         ROOT_URI: '',
         BASE_URI: defer(cfg => `${cfg.api.ROOT_URI}/`),
-        protocols: ['http'],
-        defaultProtocol: 'http',
-        host: 'localhost:3000',
     },
     env: {
         mode: process.env.NODE_ENV,
